@@ -59,6 +59,10 @@ class RPS_Game:
 
 def play_RPS(choice_list):
     game = RPS_Game(choice_list)
+
+    while True:
+        game.ask_Choice()
+        game.computerChoice = choice_list[random.randint(0, len(choice_list)-1)]
     
 if __name__ == '__main__':
     choice_list = ['rock', 'paper', 'scissors']
