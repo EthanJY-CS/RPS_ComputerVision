@@ -97,7 +97,13 @@ def play_RPS(choice_list):
     game = RPS_Game(choice_list)
 
     while True:
-        game.ask_Choice()
+        if game.userScore == 3:
+            print("The user wins the battle! You were the first to 3 victories!")
+            break
+        if game.computerScore == 3:
+            print("The Computer wins the battle! They were the first to 3 victories!")
+            break
+        game.ask_Choice_Webcam()
         game.computerChoice = choice_list[random.randint(0, len(choice_list)-1)]
     
 if __name__ == '__main__':
