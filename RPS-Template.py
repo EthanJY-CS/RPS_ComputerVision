@@ -14,7 +14,30 @@ class RPS_Game:
         self.userScore = 0
 
     def check_Winner(self, user_Choice):
-        pass
+        if (user_Choice == self.computerChoice[0]):
+            print("The result is a draw, you both chose {}!".format(self.computerChoice))
+        else:
+            if user_Choice == 'r':
+                if self.computerChoice[0] == 's':
+                    print('User wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.userScore += 1
+                else:
+                    print('Computer wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.computerScore += 1
+            elif user_Choice == 'p':
+                if self.computerChoice[0] == 'r':
+                    print('User wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.userScore += 1
+                else:
+                    print('Computer wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.computerScore += 1
+            elif user_Choice == 's':
+                if self.computerChoice[0] == 'p':
+                    print('User wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.userScore += 1
+                else:
+                    print('Computer wins! The computer Chose {}!'.format(self.computerChoice))
+                    self.computerScore += 1
 
     def ask_Choice_Webcam(self):
         pass
