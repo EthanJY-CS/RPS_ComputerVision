@@ -40,7 +40,33 @@ class RPS_Game:
                     self.computerScore += 1
 
     def ask_Choice_Webcam(self):
-        pass
+        cap = cv2.VideoCapture(0)
+        flag = False
+        while True:
+            ret, frame = cap.read()
+            resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
+            image_np = np.array(resized_frame)
+            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
+            data[0] = normalized_image
+            prediction = model.predict(data)
+            if prediction[0][0] > 0.5:
+                user_Choice = 'r'
+            elif prediction[0][1] > 0.5:
+                user_Choice = 'p'
+            elif prediction[0][2] > 0.5:
+                user_Choice = 's'
+            else:
+                user_Choice = 'n'
+            cv2.imshow('frame', frame)
+            if cv2.waitKey(1) & 0xFF == ord('r') and flag == False:
+                flag = True
+                time_start = time.time()
+            if flag == True:
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()
+        self.check_Winner(user_Choice)
 
     def ask_Choice(self):
         while True:
