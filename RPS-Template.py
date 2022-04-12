@@ -9,7 +9,9 @@ data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 class RPS_Game:
 
     def __init__(self, choice_list):
-        pass
+        self.computerChoice = choice_list[random.randint(0, len(choice_list)-1)]
+        self.computerScore = 0
+        self.userScore = 0
 
     def check_Winner(self, user_Choice):
         pass
@@ -18,10 +20,23 @@ class RPS_Game:
         pass
 
     def ask_Choice(self):
-        pass
+        while True:
+            user_Choice = input("Enter a choice of: r - rock, p - paper, s - scissors").lower()
+            lengthOfChoice = len(user_Choice)
+            if lengthOfChoice > 1:
+                print("Please, enter just one character")
+                continue
+            asciiChar = ord(user_Choice)
+            choices_ToAscii = [112, 114, 115] #Ascii codes for p, r, s (rock paper scissors)
+            if not asciiChar in choices_ToAscii:
+                continue
+            else:
+                break
+        self.check_Winner(user_Choice)
 
 def play_RPS(choice_list):
-    pass
+    game = RPS_Game(choice_list)
     
 if __name__ == '__main__':
-    pass
+    choice_list = ['rock', 'paper', 'scissors']
+    play_RPS(choice_list)
