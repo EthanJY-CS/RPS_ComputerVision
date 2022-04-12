@@ -62,7 +62,17 @@ class RPS_Game:
                 flag = True
                 time_start = time.time()
             if flag == True:
-                break
+                time_end = 5 - (time.time() - time_start)
+                blank_image = 255 * np.ones(shape=[100, 100, 3], dtype=np.uint8)
+                cv2.putText(blank_image, str(time_end), (10,60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,0), 2, 2)
+                cv2.imshow("Timer", blank_image)
+                if time_end < 0:
+                    if user_Choice == 'n':
+                        time_start = time.time()
+                        flag = False
+                        cv2.destroyWindow("Timer")
+                    else:
+                        break
 
         cap.release()
         cv2.destroyAllWindows()
