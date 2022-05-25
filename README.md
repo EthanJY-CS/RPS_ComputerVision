@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors - A Computer Vision Introdcution Project
+# Rock, Paper, Scissors - A Computer Vision Introduction Project
 
 > Classic game of Rock Paper Scissors, with a best of 3 Winner!
 
